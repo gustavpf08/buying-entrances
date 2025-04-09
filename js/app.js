@@ -1,3 +1,7 @@
+let inferiorEntrance = [400];
+let superiorEntrance = [200];
+let laneEntrance = [100];
+
 function choosedEntrance() {
   let entrance = document.getElementById("tipo-ingresso");
   let index = entrance.selectedIndex;
@@ -10,34 +14,31 @@ function gettingQuantity() {
 }
 
 function calculation() {
-  let laneQuantity = Number(document.getElementById("qtd-pista").textContent);
-  let superiorChair = Number(
-    document.getElementById("qtd-superior").textContent
-  );
-  let inferiorChair = document.getElementById("qtd-inferior").textContent;
-
   let entranceSelected = choosedEntrance();
   let quantitySelected = gettingQuantity();
 
   if (entranceSelected == 0) {
-    inferiorChair -= quantitySelected;
-    console.log(inferiorChair);
+    let inferiorChair =
+      inferiorEntrance[inferiorEntrance.length - 1] - quantitySelected;
+    inferiorEntrance.push(inferiorChair);
+    console.log(inferiorEntrance);
   }
 
   if (entranceSelected == 1) {
-    superiorChair -= quantitySelected;
-    console.log(superiorChair);
+    let superiorChair =
+      superiorEntrance[superiorEntrance.length - 1] - quantitySelected;
+    superiorEntrance.push(superiorChair);
+    console.log(superiorEntrance);
   }
 
   if (entranceSelected == 2) {
-    laneQuantity -= quantitySelected;
-    console.log(laneQuantity);
+    let laneChair = laneEntrance[laneEntrance.length - 1] - quantitySelected;
+    laneEntrance.push(laneChair);
+    console.log(laneEntrance);
   }
 }
 
 function buyEntrance() {
-  choosedEntrance();
-  gettingQuantity();
   calculation();
 }
 
