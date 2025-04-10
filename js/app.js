@@ -15,9 +15,10 @@ function gettingQuantity() {
 
 function verifyingQuantity() {
   let choosedQuantity = gettingQuantity();
+
   choosedQuantity != 0
     ? calculation()
-    : alert("Selecione pelo menos 1 ingresso para comprar.");
+    : alert("Por favor, selecione pelo menos 1 ingresso para comprar.");
 }
 
 function calculation() {
@@ -29,25 +30,34 @@ function calculation() {
   let quantitySelected = gettingQuantity();
 
   if (entranceSelected == 0) {
+    if (inferiorEntrance[inferiorEntrance.length - 1] <= 0) {
+      return alert("Ingressos esgotados para essa região.");
+    }
+
     let inferiorChair =
       inferiorEntrance[inferiorEntrance.length - 1] - quantitySelected;
     inferiorEntrance.push(inferiorChair);
-
     inferior.textContent = inferiorChair;
   }
 
   if (entranceSelected == 1) {
+    if (superiorEntrance[superiorEntrance.length - 1] <= 0) {
+      return alert("Ingressos esgotados para essa região.");
+    }
+
     let superiorChair =
       superiorEntrance[superiorEntrance.length - 1] - quantitySelected;
     superiorEntrance.push(superiorChair);
-
     superior.textContent = superiorChair;
   }
 
   if (entranceSelected == 2) {
+    if (laneEntrance[laneEntrance.length - 1] <= 0) {
+      return alert("Ingressos esgotados para essa região.");
+    }
+
     let laneChair = laneEntrance[laneEntrance.length - 1] - quantitySelected;
     laneEntrance.push(laneChair);
-
     lane.textContent = laneChair;
   }
 }
